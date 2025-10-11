@@ -1,8 +1,7 @@
-# library_system.py
+# oop/library_system.py
 
 class Book:
-    """Base Book class with title and author."""
-    def __init__(self, title: str, author: str):
+    def __init__(self, title, author):
         self.title = title
         self.author = author
 
@@ -11,8 +10,7 @@ class Book:
 
 
 class EBook(Book):
-    """Digital book with file size in KB."""
-    def __init__(self, title: str, author: str, file_size: int):
+    def __init__(self, title, author, file_size):
         super().__init__(title, author)
         self.file_size = file_size
 
@@ -21,8 +19,7 @@ class EBook(Book):
 
 
 class PrintBook(Book):
-    """Printed book with page count."""
-    def __init__(self, title: str, author: str, page_count: int):
+    def __init__(self, title, author, page_count):
         super().__init__(title, author)
         self.page_count = page_count
 
@@ -31,17 +28,13 @@ class PrintBook(Book):
 
 
 class Library:
-    """Composition: library manages a collection of Book (or subclasses)."""
     def __init__(self):
         self.books = []
 
     def add_book(self, book):
-        """Add a Book, EBook, or PrintBook instance to the library."""
-        if not isinstance(book, Book):
-            raise TypeError("Only Book (or subclasses) can be added to the library.")
         self.books.append(book)
 
     def list_books(self):
-        """Print details of each book in the library (one per line)."""
         for book in self.books:
-            print(str(book))
+            print(book)
+
